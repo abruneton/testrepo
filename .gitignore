@@ -30,4 +30,5 @@
 *.gz
 *.bak
 *.*~
+*-eps-converted-to.pdf
 

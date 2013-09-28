@@ -9,8 +9,18 @@
 
 \usepackage{adrien_hdr}
 
+% Nice equation and figure numbering
 \numberwithin{equation}{section}
 \numberwithin{figure}{section}
+
+% Graphicx configuration
+\graphicspath{{./pics/}}
+\DeclareGraphicsExtensions{.pdf,.eps,.png,.jpg}
+
+% Color
+\usepackage{color}
+\newcommand{\red}[1]{{\color{red}{#1}}}
+\newcommand{\blue}[1]{{\color{blue}{#1}}}
 
 \author{Adrien Bruneton}
 \title{Algorithms for the design of freeform optics}
@@ -34,7 +44,7 @@
 \include{conclu}
 
 % Appendix 
-\include{appendix}
+%\include{appendix}
 
 % Bibliography
 
