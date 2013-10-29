@@ -28,6 +28,7 @@ Cartesian coordinate axes~\cite{Parkyn1998}. In a second step, this
 mapping is optimized to make it irrotational. Haker~\cite{Haker2004}
 proposed an evolution equation over a pseudo-time variable $t$ towards
 a stationary solution ($t~\to~\infty$):
+
 \begin{equation}
   \pderiv{u}{t} = -\frac{1}{\mu_0} \; {\rm D} u\; \nabla^\bot \left( \Delta^{-1}\ddiv  u^\bot \right)\text{\quad with } \left.u\right|_{t=0}=\tilde{u}
   \label{eq:haker-ev}
@@ -71,9 +72,11 @@ Fig.~\ref{fig:1surf-setup} to maintain the clarity of the argument.
 A similar (but much longer) development can be performed for two optical
 surfaces considering then the two successive light deflections.
 
+\TODO figure d'Axel
+
 \begin{figure}[!htbp]
   \centering 
-  \includegraphics[width=0.49\textwidth]{geometrie}
+  \includegraphics[width=0.49\textwidth]{geometrie_integ}
   \caption{Single-surface setup with a collimated source.}
   \label{fig:1surf-setup}
 \end{figure}
@@ -248,7 +251,166 @@ in~\eqref{eq:map_quality}.
 
 \subsection{Point source case}
 
-TODO: take internal document that I started detailing this.
+In the case of a source point what follows shows that the reasoning still holds for  
+small source emission angles only (which could also directly be stated
+arguing  that this is close to the collimated case).
+We don't see yet a broader generalization.
+
+\begin{figure}[!htbp]
+  \centering \includegraphics[width=0.45\textwidth]{appendix_sph}
+  \caption{Point source configuration with a spherical
+  coordinates parametrization. A ray is uniquely determined by the two angles $(\theta, \phi)$.  
+  }
+  \label{fig:appendix_sph}
+\end{figure}
+
+
+We switch to spherical coordinates.
+The direct equivalent of the previous mapping is a function between
+ two unit spheres (for example with $R=1$). That
+is to say:
+\[ \mathbf{A} : (\theta,\phi) \mapsto (t_\theta, t_\phi)\]
+
+%To be able to apply Haker's equation, those two unit spheres are projected 
+%in the code onto two planes $\Omega_0$ and $\Omega_1$ with a given projection
+% $\mathbf{p}$
+%(typically at present, a stereographic projection):
+%\[ \mathbf{p}: (\theta, \phi) \mapsto (\rho, \phi)\]
+%with $(\rho, \phi)$ the polar parametrization of the plane.
+%
+%For an arbitrary point $\s(\theta, \phi, r)$ in between the source and the target sphere,
+%the point to be reached according to mapping is then:
+%\[ T(\theta, \phi, R_1) = R_1 \mathbf{\tilde{u}}(\theta, \phi) + R_1 \mathbf{e}_r\]
+%with $R_1$ the fixed radius of the target sphere (note the multiplication by $R_1$
+%this time to account for the  bigger radius of the target).
+%Consequently:
+%\[ \Op = \T - \s = R_1\mathbf{\tilde{u}}(\theta, \phi) + (R_1-r)  \mathbf{e}_r\]
+%or equivalently:
+%\[ \Op = \T - \s = R_1\mathbf{p}^{-1}\left[ \mathbf{{u}} (\mathbf{p}(\theta, \phi)) \right]
+% + (R_1-r)  \mathbf{e}_r\]
+%
+%With a spherical parametrization a point $\s(r, \theta, \phi)$ in 3D is associated
+%uniquely to a point in a plane $\tilde{\s}$ with polar coordinates $\tilde{\s}(p(\theta), \phi)$.
+%We assume indeed that the projection from the unit sphere to the plane conserves
+%the azimuthal angle.
+
+On the other side the 2D Haker's mapping writes with a polar parametrization:
+\[ \mathbf{u}: (\rho, \phi) \mapsto (u_\rho(\rho, \phi), u_\phi(\rho, \phi)) \]
+where $\rho$ is the polar radius and $\phi$ the polar angle.
+This 2D function is once again made irrotational (with the same procedure)
+ which in polar coordinates means (see Appendix):
+\[ u_\phi + \rho\pderiv{u_\phi}{\rho} - \pderiv{u_\rho}{\phi} = 0 \]
+
+The link between $\mathbf{u}$ and $\mathbf{A}$ is the projection from the 
+unit sphere into the plane. We assume this projection to be rotation symmetric and hence
+we write:
+\[ p :\theta  \mapsto \rho \]
+
+If the target is a sphere located at $r=R_1$ the light has to reach the point:
+\[ \T(R_1, \theta, \phi) = R_1 \mathbf{A}(\theta, \phi) + R_1\mathbf{e}_r \]
+with the field $\mathbf{A}$ being the mapping field linked to the 2D Haker's field
+by the following relationships:
+\begin{eqnarray*}
+A_r &=& 0  \\
+A_\theta &=& q[u_\rho(p(\theta),  \phi)]  =  q[u_\rho(\p)]  \\
+A_\phi &=& u_\phi(p(\theta),  \phi)  = u_\phi(\p)
+\end{eqnarray*}
+where $p$ is the rotation-symmetric 
+projection mentioned above,
+and $q$ is its inverse. Furthermore $\p$ is
+the projected point in the Haker's plane with radial coordinates
+$ (\rho, \phi) = (p(\theta), \phi)$.
+
+As for the collimated case the non-normalized field $\Op$ is still written:
+\[ \Op = \T - \s \]
+and computing the curl of $\Op$ amouts to compute the curl of $\mathbf{A}$.
+We will need the following partial derivatives:
+\begin{eqnarray*}
+\pderiv{A_\phi}{\theta} &=& p'(\theta)\pderiv{u_\phi}{\rho}(\p)\\
+\pderiv{A_\theta}{\phi} &=& \pderiv{u_\rho}{\phi}(\p)q'[u_\rho(\p)] 
+\end{eqnarray*}
+
+The formula of the curl in spherical coordinates (see appendix) result in
+the following angular curl components:
+\begin{eqnarray*}
+C_\theta &=& -A_\phi / r = -u_\phi(\p) /r \\
+C_\phi &=& A_\theta /r  = q[u_\rho(\p)] /r
+\end{eqnarray*}
+
+The last term of the curl along the radial direction is the tricky one:
+\begin{eqnarray*}
+C_r &=& \frac{1}{r\sin(\theta)} \left[ \sin(\theta) \pderiv{A_\phi}{\theta} +
+   \cos(\theta) A_\phi - \pderiv{A_\theta}{\phi} \right] \\
+& =& \frac{1}{r\sin(\theta)} \left[ \sin(\theta) p'(\theta)\pderiv{u_\phi}{\rho}(\p)
+    + \cos(\theta) u_\phi(\p) - \pderiv{u_\rho}{\phi}(\p)q'[u_\rho(\p)] \right]  \\
+\end{eqnarray*}
+
+Assuming that: (a) $\theta$ remains small enough, and (b) that $p$ is such that its 
+derivative close to the origin is equal to one (this last assumption is
+not very strong and easy to satisfy), we can write:
+\begin{eqnarray*}
+\sin\theta &\simeq \theta \\
+\cos\theta &\simeq 1 \\
+p'(\theta) = q'[u_\rho(\p)] &\simeq 1
+\end{eqnarray*}
+hence leading to:
+\[ C_r \simeq \frac{1}{r\sin(\theta)} \left[ \rho \pderiv{u_\phi}{\rho}(\p)
+    +  u_\phi(\p) - \pderiv{u_\rho}{\phi}(\p) \right]  \simeq 0\]
+
+If this last term is considered null, the curl of $\Op$ is perpendicular to $\I$
+(it has only ortho-radial components) and
+the same computation as before can be performed.
+
+%We know that the curl of $\mathbf{u}(\rho, \phi)$ is null (Haker), but it is far
+%from obvious that this holds when composing with~$\mathbf{p}$ and its inverse.
+
+%However if $p =\, $Id, the reasoning should still hold (\red{TBC numerically - Adrien}).
+%The limiting term would then write:
+%\[ C \propto \frac{T_\theta}{R_\theta Z}\]
+%with $T_\theta$ the \textit{angular} extent of the target (as seen from the source)
+%and $R_\theta$ the \textit{angular} extent of the optics (typically $\theta_{max}$
+%in the code).
+%The limiting term remains locally approximated by:
+%\[ C \propto \frac{T}{R Z}\]
+
+
+%\textbf{TODO: if this is is correct, this would mean the stereographic 
+%projection is to be reviewed - we should perform
+%a much more simple projection: $(\theta, \phi) \mapsto (r = \theta, \phi)$. 
+%\red{Wrong} - we simply need a projection which is linear at the origin
+%}
+%
+%Numerical results computed with this projection: see table \ref{tab:map_point}
+
+%\begin{table*}[!htbp]
+%\centering
+%\begin{tabular}{cc|c|c||c|c|c|}
+%\cline{2-7}
+% &  \multicolumn{6}{|c|}{Integrability condition ($\times 10^{-3}\,mm^{-1}$)} \\
+%  \cline{2-7}
+%\multicolumn{1}{c|}{} & \multicolumn{3}{c||}{Max} & \multicolumn{3}{c|}{RMS} \\ 
+%\cline{2-7}
+%\multicolumn{1}{c|}{} & 1/T & R & Z & 1/T & R & Z \\  \cline{2-7}
+%\hline 
+%\multicolumn{1}{|c|}{No mapping optimization} & \multicolumn{3}{c||}{657} & 
+%\multicolumn{3}{c|}{205} \\ 
+%\hline 
+%\multicolumn{1}{|c|}{Optimized mapping} & \multicolumn{3}{c||}{20.6} & 
+%\multicolumn{3}{c|}{4.94} \\ 
+%\hline 
+%\multicolumn{1}{|c|}{Parameter +25\%} & 12.1 &  10.4 & 12.0  & 3.26 & 3.32 & 3.20 \\ 
+%\hline 
+%\multicolumn{1}{|c|}{Parameter +50\%} & 9.96 &  7.64 & 9.40 & 3.16 & 2.57  &  2.88 \\ 
+%\hline 
+%\end{tabular}
+%\caption{Integrability condition for various geometrical configurations in a point source run}
+%\label{tab:map_point}
+%\end{table*} 
+%
+%Doesn't hold when scaling the parameters by $\times 2$ or $\times 4$, confirming
+%the local aspect of the ratio given previously.
+%However we still observe that the linear estimation is a conservative one.
+%\red{wrong interpretation after what precedes ...}
 
 \subsection{General case}
 
