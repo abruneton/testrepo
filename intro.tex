@@ -1,19 +1,57 @@
 \chapter{Introduction}
 \label{ch:intro}
 
-Freeform optics blabla
-
-An equation outside a section
-\begin{equation}
-3+2=5 = \N
-\label{eq1:tst_eq}
-\end{equation}
 
 \section{What freeform optics boil down to}
-\begin{figure}
-\centering
-\caption{Test figure}
-\end{figure}
+
+More and more lighting applications require the design of dedicated
+optics to achieve a given radiant intensity or irradiance distribution.
+Freeform optics has the advantage of providing such a functionality
+with a compact design.  It was previously demonstrated in
+[B{\"{a}}uerle et al., Opt. Exp.  20, 14477-14485 (2012)] that the
+up-front computation of the light path through the optical system (ray
+mapping) provides a satisfactory approximation to the problem, and
+allows the design of multiple freeform surfaces in transmission or in
+reflection.  This article presents one natural extension of this work
+by introducing an efficient optimization procedure based on the
+physics of the system.  The procedure allows the design of multiple
+freeform surfaces and can render high resolution irradiance patterns,
+as demonstrated by several examples, in particular by a lens made of
+two freeform surfaces projecting a high resolution logo ($530\times
+160$ pixels).
+
+
+The design of freeform optics is becoming the preferred route to
+achieve compact optical systems producing a prescribed irradiance or
+radiant intensity distribution.  They find a wide scope of applications ranging
+from general lighting (street lighting for example) to automotive
+lighting and even more specialized applications like laser beam
+shaping.
+
+In a previous publication~\cite{Baeuerle2012}, the authors present a
+freeform design algorithm that can handle multiple optical surfaces
+whilst at the same time operating directly with a prescribed target
+irradiance pattern. In its practical implementation, this approach has
+some limitations with respect to the achievable resolution and the
+precision of the generated lighting patterns, in particularly for more
+elaborate and highly asymmetrical geometries.  
+A precise analysis of those limitations will be the subject of another
+article by the authors.
+Based on those
+findings, and still for a null-\'{e}tendue source, we therefore
+propose an extended algorithm that enables improved homogeneity and
+higher achievable resolutions within the target irradiance patterns.
+
+In the first part of this article, the principle of the ray mapping
+computation as described in~\cite{Baeuerle2012} is briefly reviewed.
+The main contribution of this article is then presented in the
+subsequent section: the parametrization chosen for the surface
+representation allows to readily compute a localized light flux
+traversing the optical elements. A comparison of the flux hitting the
+target with the prescribed irradiance allows the optics to be directly
+optimized to fine-tune the results obtained from the mapping.
+Important numerical aspects have to be taken into account during
+calculations and will be highlighted.
 
 \section{Market trend - LED is the new light source}
 

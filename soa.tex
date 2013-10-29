@@ -6,8 +6,36 @@ Several procedure have been described in the litterature to compute
 freeform optics. We review here the most relevant ones, and highlight
 their respective advantages and drawbacks.
 
-We also covers the litterature dealing with extended source since this 
+We also covers the literature dealing with extended source since this 
 forms a major part of this work.
+
+
+Previous work on high-resolution irradiance tailoring was most notably
+performed by Ries and Muschaweck~\cite{Ries2002}, who outlined a
+single-step method that minimizes the deviation between the prescribed
+and the realized irradiance pattern on the target. For a given surface
+shape, the irradiance realized on the target is derived from the
+curvature tensor of the outgoing wave field, which in turn is computed
+using the curvature tensors of the incoming wave-front and that of the
+optical surface. The computation of the curvature tensor of the
+optical surface involves the second derivatives of its parametrization
+and the resulting equations are highly non-linear. Convergence to the
+global minimum requires the initial solution to be sufficiently close
+to the global minimum. One way to achieve this is using a multi-grid
+technique and a good first guess~\cite{Baeuerle2010}.
+
+The main advantage of this method is that the optical surface is
+readily represented by a smooth function, as the field of surface
+normals automatically conforms to the integrability
+condition~Eq.~\eqref{eq:integ}. However, a disadvantage is the high
+computational cost which is partly due to the sensitivity of the
+target irradiance to the surface's second derivatives. In addition,
+this procedure has, to the best of the authors' knowledge, yet only
+been published and proven for a single optical surface, which is a
+major difference with the work presented in~\cite{Baeuerle2012} and
+here.
+
+
 
 \section{Analytical methods}
 \subsection{Schruben and other functional methods}
