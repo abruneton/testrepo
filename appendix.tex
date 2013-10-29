@@ -14,3 +14,152 @@
 \section{Surface integrabiliy conditions - a proof}
 
 \section{Various implementation / algorithmic details  (graph coloring?)}
+
+
+\section*{Lambert source power}
+
+\section*{Curl expression in polar and spherical}
+\begin{itemize}
+\item in polar coordinates let $\mathbf{u}(\rho, \phi)$ be a 2D vector fied.
+Its curl writes:
+\[ C_z= \frac{1}{\rho}\left( \pderiv{}{\rho}(\rho u_\phi) - \pderiv{u_\rho}{\phi} \right)\]
+The nullity of the polar curl can be reduced to:
+\[ u_\phi + \rho\pderiv{u_\phi}{\rho} - \pderiv{u_\rho}{\phi} = 0 \]
+
+\item in spherical coordinates let  $\mathbf{A}(r, \theta, \phi)$ be a 3D vector field.
+The curl writes:
+\begin{eqnarray*}
+C_r &=& \frac{1}{r\sin\theta} \left( \pderiv{}{\theta}(\sin\theta A_\phi) 
+        - \pderiv{A_\theta}{\phi} \right) \\
+C_\theta &=& \frac{1}{r\sin\theta} \pderiv{A_r}{\phi} - \frac{1}{r}\pderiv{}{r}(rA_\phi) \\
+C_\phi &=& \frac{1}{r} \left( \pderiv{}{r}(rA_\theta) - \pderiv{A_r}{\theta} \right)
+\end{eqnarray*}
+\end{itemize}
+
+\section*{Vector calculus identities}
+\paragraph{}
+For any scalar field $\mu$, and vector fields $\mathbf{A}$, $\mathbf{B}$ and
+$ \mathbf{C}$, we have:
+\begin{itemize}
+\item $ \curl{(\mu \mathbf{A})} = \mu \curl{\mathbf{A}} + \grad{\mu} \times \mathbf{A}$ 
+\item $ \mathbf{A}\cdot(\mathbf{B} \times \mathbf{C}) = \mathbf{C}\cdot(\mathbf{A} 
+\times \mathbf{B}) = \mathbf{B}\cdot(\mathbf{C} \times \mathbf{A})$ (triple product)
+\end{itemize}
+
+\paragraph{}
+The identities above also lead to:
+\[
+\curl{\mathbf{A}} = 0 \Rightarrow (\mu \mathbf{A}) \cdot (\curl{(\mu \mathbf{A}})) = 0
+\]
+Indeed:
+\[  (\mu \mathbf{A}) \cdot (\curl{(\mu \mathbf{A}})) =
+  (\mu \mathbf{A}) \cdot (0 + \grad{\mu} \times \mathbf{A}) = 
+   \mu \grad{\mathbf{\mu}}\cdot(\mathbf{A} \times \mathbf{A})
+\]
+
+Hence any vector field proportional to an another irrotational vector field 
+satisfies the integrability condition (\ref{eq:integ}). 
+In particular, given an irrotational field $\mathbf{A}$, its normalized
+counterpart
+$ \mathbf{A} / \|\mathbf{A}\| $ satisfies the integrability condition.
+
+\section*{Gradient of the inverse of a norm}
+Given a vector field $\mathbf{A}$, the gradient of the inverse of its norm writes:
+\[ 
+  \grad{\frac{1}{\|\mathbf{A}\|}} = 
+  \grad{\frac{1}{\sqrt{\mathbf{A}^2}}} =
+  - \frac{\mathbf{A} \times (\curl{\mathbf{A}}) + 
+  (\mathbf{A}\cdot\grad{})\mathbf{A}}{\|\mathbf{A}\|^3} 
+  \]
+
+
+ 
+where $\mathbf{A}^2= \mathbf{A} \cdot \mathbf{A}$ and where $ \| \cdot \| $ is 
+the usual Euclidian norm.
+When the field is irrotational this can be further reduced to:
+\[
+  \grad{\frac{1}{\|\mathbf{A}\|}} = 
+  - \frac{(\mathbf{A}\cdot\grad{})\mathbf{A}}{\|\mathbf{A}\|^3} 
+  \]
+
+In terms of order of magnitude, if $ \|\mathbf{A}\| $ varies like $x$, and 
+the field's gradient is of the order of magnitude 1, then
+this expression is a second order term in $1/x^2$.
+
+\section*{Surface integrability condition}
+In 3D, let $\Phi$ be the set of $C^2$ 3D scalar fields, and let also $\mathbf{N}$ be a 
+$C^1$  vector field.
+We show the equivalence between:
+
+(i)  $ \mathbf{N} \cdot (\curl{\mathbf{N}}) = 0 $ 
+
+(ii) There exists a surface $(S_\alpha)$ implicitly parametrized
+ by $\phi(x,y,z) = \alpha$,
+with $\phi \in \Phi$ and $\alpha$ a constant, 
+and such that at every surface point, $\mathbf{N}$ 
+is perpendicular to $(S_\alpha)$. 
+
+\paragraph{Proof:}
+\begin{itemize}
+\item $(ii) \Rightarrow (i)$: the surface gradient and $\mathbf{N}$
+are co-linear, which writes:
+\[ \mu \mathbf{N} = \grad{\phi} \]
+with $\mu$ a scalar field depending on the respective norms of 
+$\mathbf{N}$ and $\grad{\phi}$.
+Taking the curl of this expression directly leads to condition $(i)$.
+
+\item $(i) \Rightarrow (ii)$: the condition $(i)$ implies that for any given 
+$C^1$ scalar field $\mu$:
+\begin{eqnarray*}
+\mu \mathbf{N}\cdot(\curl{\mathbf{N}}) & = & 0 \\
+\mathbf{N}\cdot(\mu\curl{\mathbf{N}}) & = & 0  \\
+\mathbf{N}\cdot(\mu\curl{\mathbf{N}} + \grad{\mu} \times \mathbf{N} ) & = & 0 \\
+\curl{(\mu \mathbf{N}) & =&  0}
+\end{eqnarray*}
+where in the one but last line we used the fact that 
+$\mathbf{N} \cdot (\grad{\mu} \times \mathbf{N}) = 0$.
+Hence $\mu \mathbf{N}$ is irrotational and can be written as a gradient:
+\[ \exists \phi \in \Phi / \mu \mathbf{N} = \grad{\phi} \]
+
+The iso-surfaces of the scalar potential $\phi$ are given by $\phi = cst$ 
+and are such that $\mathbf{N}$ is perpendicular to them at all points
+(geometrical definition of the gradient).
+\hfill $\square$
+\end{itemize}
+
+\section*{Change of variables}
+When writing a differential conservation equation, a change of variables
+is operated as follow:
+
+\[ f(x, y) dx\,dy= f(x, y)|J_\phi(r,s)|dr\, ds = f(\phi(r, s))|J_\phi(r,s)|dr\, ds \]
+where $J_\phi (r,s)$ is the Jacobian of the mapping $\phi: (r, s) \mapsto (x, y) $
+computed at the $(r, s)$ point.
+
+\subsection*{Special case - one variable remains unchanged}
+If $\phi: (r, s) \mapsto (r, y)$ then the Jacobian reduces to $\pderiv{y}{s}$ computed
+with $r$ being constant.
+
+The composition of two single changes of variables can be easier to compute as the direct
+Jacobian of the full transformation. For example, let:
+\[ \phi_1 : (r, s) \mapsto (r, y) \quad \textrm{and} \quad \phi_2: (r,y)\mapsto(x,y)\]
+then:
+\[ J_1 = \left. \pderiv{y}{s} \right|_{r=cst} \quad \textrm{and} \quad
+ J_2 = \left.\pderiv{x}{r}\right|_{y=cst}\]
+
+To understand the difference with the full Jacobian:
+\[ J_{1 \circ 2} = \pderiv{x}{r} \pderiv{y}{s} - \pderiv{x}{s} \pderiv{y}{r}\]
+one has to remember that in the computation of $J_1$ (resp. $J_2$) the variable $r$
+(resp. $y$) is being held constant.
+
+In the computation of $J_{1 \circ 2}$ however,
+the variable $r$ (resp. $s$) is being held constant when computing a partial derivative
+with respect to $s$ (resp. $r$).
+
+The simple example:
+\begin{eqnarray*}
+x  = r+s \\
+y  = r-s
+\end{eqnarray*}
+illustrates this well: $J_1 = -1$, $J_2=2$ and $J_{1\circ2}= -2$
+Depending on the situation, one or the other solution is more handy.
+

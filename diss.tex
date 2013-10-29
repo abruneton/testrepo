@@ -1,7 +1,8 @@
 \documentclass[10pt,a4paper]{book}
 \usepackage[latin1]{inputenc}
-\usepackage{a4wide}
-\usepackage{graphicx}
+%\usepackage{a4wide}
+\usepackage{graphicx}  % select the driver for image conversion automatically
+					   % see http://en.wikibooks.org/wiki/LaTeX/Importing_Graphics
 \usepackage{epstopdf}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -9,8 +10,18 @@
 
 \usepackage{adrien_hdr}
 
+% Nice equation and figure numbering
 \numberwithin{equation}{section}
 \numberwithin{figure}{section}
+
+% Graphicx configuration
+\graphicspath{{./pics/}}
+\DeclareGraphicsExtensions{.pdf,.eps,.png,.jpg}
+
+% Color
+\usepackage{color}
+\newcommand{\red}[1]{{\color{red}{#1}}}
+\newcommand{\blue}[1]{{\color{blue}{#1}}}
 
 \author{Adrien Bruneton}
 \title{Algorithms and numerical methods for the design of multiple freeform optics
@@ -18,9 +29,8 @@ under consideration of the source's \'etendue.}
 
 \begin{document}
 
-%\maketitle
+\maketitle
 \tableofcontents
-
 
 % Introduction
 \include{intro}
@@ -42,7 +52,7 @@ under consideration of the source's \'etendue.}
 \include{conclu}
 
 % Appendix 
-\include{appendix}
+%\include{appendix}
 
 % Bibliography
 
