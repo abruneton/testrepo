@@ -4,4 +4,28 @@ TODOs
 - review title
 - spell check!
 - bibliography
-- 
+- mail to Axel
+
+
+
+Hallo Axel,
+
+wie geht's dir?
+Guess what, ich bin wieder daran, meine Diss zu schreiben (hurray!).
+Ich braüchte von dir genauere Informationen über was du in deiner Diss geschrieben hast, bzw über die Haker-Gleichung und ihrer Lösung. 
+Damit bin ich sicher, dass ich die korrekte Dinge als "State of the art" zuordne :-)
+
+Nämlich, hast du das Folgende diskutiert:
+	- die stereo. Projektion der Strahlens
+	- Hakers Gleichung selbst
+	- Integrabilitäts-Bedigungen
+	- Umsetzung des Ganzes im Code und entsprechende Numerik
+	- Anwendung des Verfahrens an mehr als eine Oberfläche (und Splitting der Umlenkung)
+und welche Designs hast du gezeigt (Strassenleuchte wahrscheinlich, AUTOLIGHT auch?)
+
+Sorry, ich weiss, dass wir das schon vorher diskutiert hatten, aber ich muss sagen, ich habe vergessen, was wir zur Zeit genau gesagt hatten.
+
+Alles Gute!
+
+
+
