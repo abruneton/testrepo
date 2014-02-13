@@ -25,24 +25,49 @@ example in old street light devices, where
 the reflector part has a simple design, less than 50\% of the light flux produced
 by the source is reaching the intended area on the street.
 
-The \emph{freeform optics} were invented in response to this challenge 
+\section{Typical applications requiring freeform optics}
+The \emph{freeform optics} were invented partly in response to this challenge 
 and further pushed forwards by an increasing need of
-precise light-tailoring applications. The youth of this field of research
+precise light-tailoring applications (see an example below of an automotive
+application \ref{intro:img_auto}). The youth of this field of research
 makes a precise definition of what is a freeform optics difficult to give, 
-except that they are not conventional optics! A suitable approach(\TODO cite Axel?) however is to 
+except that they are not conventional optics. A suitable approach(\TODO cite Axel?) however is to 
 consider the degrees of freedom needed to describe such an element. Standard optics
 have typically few degree of freedoms: spherical lenses are rotation symmetric, and 
 three geometrical parameters (diameter, thickness and focal length) suffice 
 to describe them fully. On the other side of the spectrum, an optical 
-surface requiring an exhaustive sampling of several 
+surface requiring an exhaustive sampling of several points to be precisely described
+can certainly be seen as a freeform optics.
 
-\TODO mention solar concentrators
 
-Freeform optics thus share the characteristic of requiring a complex rich
+\img AUTOLIGHT?
+
+
+Another key driver of the developments in the domain can be understood if one sees
+the problem the other way around. Instead of producing 
+a predefined pattern from a light source,
+solar concentrators aim at collecting as efficiently as possible the light from a 
+remote ''wide'' source (what is understood by ''wide'' will be later precised in
+this work with the concept of étendue) to bring it onto a small device (typically a heat 
+tube or a solar cell). There again ''simple'' optics have shown their limitations and the
+need appeared to produce a specific optic design for such an application.
+
+OR OR : Not to be forgotten are all the applications where the inverse situation is 
+found: the source is not under the control of the designer, who then
+tries to collect the light from an external system.
+This is typically the case of the solar concentrators where the light of the sun
+is to be brought on a small area containing a photovoltaic cell or a thermal device
+to be heated.
+This application was by the way a major driver in the development of
+freeform reflectors (\cit Non imaging 
+optics book). The present work won't present any application in this field, but the 
+domain remains however very proeminent.
+
+Freeform optics thus share the characteristic of requiring a complex, rich
 parametrisation and of being (mostly) non-imaging devices (in opposition with 
 a camera objective for example).  
 
-The design of freeform optics is thus becoming the preferred route to
+The design of freeform optics is becoming the preferred route to
 achieve compact optical systems producing a prescribed irradiance or
 radiant intensity distribution.  They find a wide scope of applications ranging
 from general lighting (street lighting for example) to automotive
@@ -67,32 +92,40 @@ shaping.
 %Important numerical aspects have to be taken into account during
 %calculations and will be highlighted.
 
-\section{Market trend - LED is the new light source}
+\section{Physical units - Etendue}
+The physical \emph{\etendue} characterizes how ''spread'' a source is, how ''not-punctual'' it
+is. Said differently this determines how well one can theoritically focus the light from such a source 
+to a point. 
+Let's take the example of a light source in form of a disc, whose every point on the surface emits light
+within a given angular range around the normal. Intuitively we see that no matter how hard one tries, the
+light of such a source can not be all brought to a single point on a screen. The \etendue expresses
+this physical limitation.
 
+Formally the \etendue is defined as a double integral over the 2D surface of the emitter:
 
+\[
+	d\Omega = \iint{dS}
+\] 
 
-\section{Typical applications requiring freeform optics}
-Guiding the light from a radiant source to a given target 
+A source with a null \etendue has the advantageous feature that a point in space is only 
+met by one single light ray emitted by the source. An extended source (with a non-zero \etendue)
+violates this simple property. 
 
-\img AUTOLIGHT?
-
-Not to be forgotten are all the applications where the inverse situation is 
-found: the source is not under the control of the designer, who then
-tries to collect the light from an external system.
-This is typically the case of the solar concentrators where the light of the sun
-is to be brought on a small area containing a photovoltaic cell or a thermal device
-to be heated.
-This application was by the way a major driver in the development of
-freeform reflectors (\cit Non imaging 
-optics book).
+We recall finally that the concept of \etendue is closely related to the one of phase-space, 
+which we will not cover
+extensively in this work. The \etendue is direclty proportional to the volume of the 
+representation of the source in the phase-space. Manipulating phase-space representations provides 
+a great analysis tool when having already defined an optical system, but does not help much 
+when dealing with the design process itself.
 
 \section{Formal statement of the problem}
 
-Historically two set of terms can be used to describe the various physical quantities. 
+Historically two sets of terms can be used to describe the various physical quantities. 
 The photometric community speaks of luminance, illuminance, and luminous intensity, while
 the radiometric community speaks of radiance, irradiance and radiant intensity. The key 
 difference between the two is that the former uses the lumen ($lm$) as the primary
- light power unit, while the second simply uses the watt ($W$).
+light power unit, while the second simply uses the watt ($W$). The lumen is directly related to the 
+way the human eye perceive the light, while the watt is a standard physical unit of power.
 The above is mostly not relevant for the work presented here, and we hence try to stick 
 to the photometric terminology. The reader is directed toward the glossary for a more
 precise definition of the terms. 
@@ -100,18 +133,50 @@ precise definition of the terms.
 Although freeform optics start to be used in conjunction with coherent light 
 sources, most of the applications cited above only requires geometrical 
 optics. We hence assume a Fresnel number much greater than unity, and use only
-the laws of geometrical optics, i.e. Snell's laws of reflection and refraction.
+the laws of \emph{geometrical} optics, i.e. Snell's laws of reflection and refraction.
+As we will see, this sets up already leads to a complex formulation of the problem.
 
 \img from the seminar, or from the article with the flux tubes
 
+Given a light source $S$, a target surface $T$, and a target irradiance $I$, one seeks the optical surface 
+$\Sigma$ turning the luminous intensity of the source into the desired irradiance on the 
+target. To be clear, no masking element is to be used, that is to say one wishes to achieve $I$ just by
+deflecting the light . Said differently, if we assume no power loss (due to refraction or absorption of
+the optical element), the total light power emitted by the source must be found on the target.
+The problem can be considered in a two-dimensional space, or in three dimensions, the latter posing much 
+more difficulties, as will be further explained.
+
 \section{Contribution of the author to the field}
 
-link with the Monge problem and use of Haker's evolution equation to solve it
-integrability conditions detailing the area of validity of the above heuristic
-flux optimization
-extended source consideration in 2D 
+The first section of the present work highlights the previous contributions to the field.
+The author's contribution to this area of research can be stated as follow:
+\begin{list}
+\item in conjunction with A. Baüerle (\cite{DissAxel}), the author recalls the link between this problem
+and the Monge's optimal mass transport problem. The use of Haker's evolution equation to provide
+an efficient heuristic to solve the problem was new to the field, and has proven to be a valid
+solution in many practical usages.
+\item the author formally demonstrates the adequation between the heuristic mentioned above and the exact
+solution of the problem, and proposes quantitative criteria to assess the quality of the method.
+\item a direct optimisation procedure on the flux received by the target is then presented, and combined 
+with the above allows to refine the result up to a high level of quality, as demonstrated on a high-resolution
+example
+\item the author then suggests an extension of the approach to extended sources. 
+For the two dimensional problem, an integration scheme is proposed and results are presented validating 
+the approach. The basis of a similar reasoning for the 3D case are given.
+\item ?? segmented optics ??
+\end{list}
 
 \section{Structure of this work}
+The present work is structured as follow. In the first chapter the state of the art is reviewed. In a second 
+chapter the ray mapping procedure published previously is detailled further, as it serves as basis
+for the rest of the work.
+The integrability conditions and their range of validity are then analyzed in a third chapter, with a
+quantitative criteria precised. 
+Finally the problem of real extended source is being adressed, and a numerical solution is being described
+for the two dimensional case. 
+
+Many example applications will be given along the chapters, illustrating the point being made.
+
 \TODO at the very end.
 
 

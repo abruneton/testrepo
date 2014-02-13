@@ -3,15 +3,27 @@
 
 \section{The freeform algorithms at hand - An overview}
 Several procedure have been described in the litterature to compute 
-freeform optics. We review here the most relevant ones, and highlight
+freeform optics. The most relevant ones are reviewed here, and we highlight
 their respective advantages and drawbacks.
 
 We also covers the literature dealing with extended source since this 
 forms a major part of this work.
 
+The separation is made between analytical methods, which tackle the issue in a formal
+direct mathematical way (which does not always lead to a practical construction
+method of the optical surface), and the algorithmical methods, which are more
+constructive by nature, although not always exact.
 
-Previous work on high-resolution irradiance tailoring was most notably
-performed by Ries and Muschaweck~\cite{Ries2002}, who outlined a
+At the end of this chapter, an entire section is dedicated to the work done in conjunction
+with A. Baüerle
+on the ray mapping approach. This is indeed paramount to the understanding of the rest of this 
+work.
+
+\section{Analytical methods}
+\subsection{Schruben and other functional methods}
+
+\subsection{Curvature tensor method - Ries}
+Ries and Muschaweck~\cite{Ries2002} outlined a
 single-step method that minimizes the deviation between the prescribed
 and the realized irradiance pattern on the target. For a given surface
 shape, the irradiance realized on the target is derived from the
@@ -36,24 +48,42 @@ major difference with the work presented in~\cite{Baeuerle2012} and
 here.
 
 
-
-\section{Analytical methods}
-\subsection{Schruben and other functional methods}
-
-\subsection{Curvature tensor method - Ries}
-
 \subsection{Conics methods - Oliker}
+In standard optics, the geometrical properties of conics (parabola, ellipse) have used since
+the antiquity. A perfect point light source  placed at the (\bf{FOYER!!}) of a parabola produces
+a perfectly collimated flux of light. Similarly all rays emitted from the FOYER of an ellipse are 
+focused onto the second FOYER. 
+Oliker suggests to build the freeform surface as a collection of section of conics directing
+part of the light flux emitted by the point source to a given point on the target. The orientation
+of the conical section dictated the direction taken by light and hence the area hit on the target, 
+and the area of the section dictates the relative irradiance of the area being illuminated.
+Oliker shows formally that with an infinite collection the section thus obtained is smooth and fulfills 
+the problem. 
+Practical applications of this technique are however limited by the complexity of the procedure, which
+at the time of writing is quadratic with the number of conic patches being used, and by the fact that
+with a limited number of such patches, the constructed surface is no continuous, but not $C_1$ (edges
+are seen at the conection lines between patches).
 
 \section{Algorithmical methods}
 \subsection{Brute force ray tracing (??) }
 \subsection{Simultaneous Multiple Surfaces - Benitez}
 
+Benitez proposes a constructive method to solve the problem. 
+The entry point of the process consists in two \emph{ray congruences} (an
+orthonormal ray bundle, i.e. a ray bundle emitted by a source with 
+null \etendue) to be coupled through an optical surface.
+
+<re read and describe>
+
+When designing optical systems to achieve a given target irradiance, the key challenge in the
+process is to convert the irradiance description into a ray congruence formulation.
+Benitez' method has proven however very successful in many applications (cite cite cite!)
 
 \section{Ray mapping computation and optimization - Axel's part}
 \subsection{Projection and initial mapping computation}
-
+< a pomper depuis les articles>
 \subsection{Haker's evolution equation}
-
+< a pomper depuis les articles>
 
 
 
